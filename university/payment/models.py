@@ -234,7 +234,7 @@ class DragonpayChannel(SoftDeleteModel):
         help_text="Merchant percentage charge",
     )
     addon_fixed = models.DecimalField(
-        max_digits=9, decimal_places=2, default=0, help_text="Fixed SLU charge"
+        max_digits=9, decimal_places=2, default=0, help_text="Fixed institution charge"
     )
 
     def __str__(self):

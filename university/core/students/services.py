@@ -113,8 +113,8 @@ def enrollment_step_1_information(*, enrollment: models.Enrollment, data: dict):
 
     student = enrollment.student
     student.phone_no = data.get("contact_number", student.phone_no)
-    student.user.email = data.get("slu_email", student.user.email)
-    student.slu_email = data.get("slu_email", student.slu_email)
+    student.user.email = data.get("institutional_email", student.user.email)
+    student.institutional_email = data.get("institutional_email", student.institutional_email)
     student.email = data.get("personal_email", student.email)
     student.father_name = data.get("father_name", student.father_name)
     student.father_occupation = data.get("father_occupation", student.father_occupation)
@@ -140,7 +140,7 @@ def enrollment_step_1_information(*, enrollment: models.Enrollment, data: dict):
 @transaction.atomic
 def enrollment_step_2_discounts(*, enrollment: models.Enrollment, data: dict):
     personnel = None
-    if data.get("is_slu_employee"):
+    if data.get("is_employee"):
         personnel = Personnel.objects.filter(
             user__username=data.get("employee_no")
         ).first()
@@ -161,7 +161,7 @@ def enrollment_step_2_discounts(*, enrollment: models.Enrollment, data: dict):
         models.EnrollmentDiscount.objects.create(enrollment=enrollment)
 
     discount = enrollment.discounts
-    discount.is_slu_employee = data.get("is_slu_employee")
+    discount.is_employee = data.get("is_employee")
     discount.personnel = personnel
     discount.is_employee_dependent = data.get("is_employee_dependent")
     discount.dependent_personnel = dependent_personnel
@@ -343,8 +343,8 @@ def test_student_create(
             "zip_code": "2600",
             "phone_no": "0212345678",
             "home_phone_no": "09987654321",
-            "baguio_address": "Baguio City",
-            "baguio_phone_no": "09123456789",
+            "local_address": "Baguio City",
+            "local_phone_no": "09123456789",
             "guardian_name": None,
             "guardian_address": None,
             "father_name": "Miguel dela Cruz",
@@ -458,7 +458,7 @@ def test_student_create(
                 "current_address": student.address,
                 "contact_number": student.home_phone_no,
                 "personal_email": user.email,
-                "slu_email": user.email,
+                "institutional_email": user.email,
                 "father_name": student.father_name,
                 "father_phone_no": "09123456789",
                 "father_email": "migueldelacruz@example.com",
@@ -478,7 +478,7 @@ def test_student_create(
         if not hasattr(enrollment, "discounts"):
             models.EnrollmentDiscount.objects.create(
                 enrollment=enrollment,
-                is_slu_employee=False,
+                is_employee=False,
                 personnel=None,
                 is_employee_dependent=False,
                 dependent_personnel=None,

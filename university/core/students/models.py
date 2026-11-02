@@ -84,7 +84,7 @@ class Student(SoftDeleteModel):
     )
 
     email = models.EmailField(blank=True, null=True)
-    slu_email = models.EmailField(null=True)
+    institutional_email = models.EmailField(null=True)
     phone_no = models.CharField(max_length=50, blank=True, null=True)
 
     street = models.CharField(max_length=250, blank=True, null=True)
@@ -94,8 +94,8 @@ class Student(SoftDeleteModel):
     zip_code = models.CharField(max_length=250, blank=True, null=True)
     home_phone_no = models.CharField(max_length=50, blank=True, null=True)
 
-    baguio_address = models.CharField(max_length=250, blank=True, null=True)
-    baguio_phone_no = models.CharField(max_length=250, blank=True, null=True)
+    local_address = models.CharField(max_length=250, blank=True, null=True)
+    local_phone_no = models.CharField(max_length=250, blank=True, null=True)
 
     guardian_name = models.CharField(max_length=250, blank=True, null=True)
     guardian_address = models.CharField(max_length=250, blank=True, null=True)
@@ -216,7 +216,7 @@ class Enrollment(BaseModel):
     contact_number = models.CharField(max_length=255, null=True)
     home_contact_number = models.CharField(max_length=255, null=True)
     personal_email = models.EmailField(null=True)
-    slu_email = models.EmailField(null=True)
+    institutional_email = models.EmailField(null=True)
 
     father_name = models.CharField(max_length=255, blank=True, null=True)
     father_occupation = models.CharField(max_length=255, blank=True, null=True)
@@ -265,7 +265,7 @@ class EnrollmentDiscount(BaseModel):
     enrollment = models.OneToOneField(
         Enrollment, on_delete=models.CASCADE, related_name="discounts"
     )
-    is_slu_employee = models.BooleanField(default=False)
+    is_employee = models.BooleanField(default=False)
     personnel = models.ForeignKey(
         Personnel,
         on_delete=models.SET_NULL,

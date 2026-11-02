@@ -216,8 +216,8 @@ class PersonnelFactory(DjangoModelFactory):
 
     phone_no = factory.LazyFunction(fake.mobile_number)
     home_phone_no = factory.LazyFunction(fake.mobile_number)
-    baguio_address = factory.LazyFunction(fake.address)
-    baguio_phone_no = factory.LazyFunction(fake.mobile_number)
+    local_address = factory.LazyFunction(fake.address)
+    local_phone_no = factory.LazyFunction(fake.mobile_number)
     street = factory.LazyFunction(fake.street_address)
     barangay = factory.LazyFunction(fake.province_lgu)
     city = factory.LazyFunction(fake.city)

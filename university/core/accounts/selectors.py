@@ -117,7 +117,7 @@ def faculty_list_get() -> list[Personnel]:
         category__in=[
             Personnel.Categories.CONTRACTUAL_FACULTY,
             Personnel.Categories.FACULTY,
-            Personnel.Categories.NON_SLU_LECTURER,
+            Personnel.Categories.VISITING_LECTURER,
         ]
     )
 

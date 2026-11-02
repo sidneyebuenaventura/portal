@@ -41,8 +41,8 @@ class TestStudentProfileApi:
             "street": fake.street_address(),
             "zip_code": fake.postcode(),
             "home_phone_no": fake.mobile_number(),
-            "baguio_address": fake.address(),
-            "baguio_phone_no": fake.mobile_number(),
+            "local_address": fake.address(),
+            "local_phone_no": fake.mobile_number(),
             "father_name": fake.name_male(),
             "father_occupation": fake.job(),
             "mother_name": fake.name_female(),
@@ -121,7 +121,7 @@ class TestStudentEnrollmentLatestAPIView:
             "current_address": fake.address(),
             "contact_number": fake.mobile_number(),
             "personal_email": fake.email(),
-            "slu_email": fake.email(),
+            "institutional_email": fake.email(),
             "father_name": fake.name_male(),
             "father_occupation": fake.job(),
             "mother_name": fake.name_female(),
@@ -152,7 +152,7 @@ class TestStudentEnrollmentLatestAPIView:
         enrollment.save()
 
         data = {
-            "is_slu_employee": True,
+            "is_employee": True,
             "employee_no": personnel.user.username,
             "is_employee_dependent": False,
             "dependent_employee_no": "",

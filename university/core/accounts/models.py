@@ -293,7 +293,7 @@ class Personnel(SoftDeleteModel):
 
     class UnionAffiliations(models.TextChoices):
         ELP = "E", "ELP"
-        UFESLU = "U", "UFESLU"
+        FACULTY_UNION = "U", "Faculty Union"
         ALLIANCE = "A", "ALLIANCE"
 
     class EmploymentTypes(models.TextChoices):
@@ -330,7 +330,7 @@ class Personnel(SoftDeleteModel):
         CONTRACTUAL_FACULTY = "CF", "Contractual Faculty"
         ADMIN_EMPLOYEE = "AE", "Admin Employee"
         CONTRACTUAL_EMPLOYEE = "CE", "Contractual Employee"
-        NON_SLU_LECTURER = "NS", "Non-SLU/Visiting Lecturer"
+        VISITING_LECTURER = "NS", "Visiting Lecturer"
 
     user = models.OneToOneField(User, on_delete=models.SET_NULL, blank=True, null=True)
 
@@ -376,8 +376,8 @@ class Personnel(SoftDeleteModel):
 
     phone_no = models.CharField(max_length=50, blank=True, null=True)
     home_phone_no = models.CharField(max_length=50, blank=True, null=True)
-    baguio_address = models.CharField(max_length=250, blank=True, null=True)
-    baguio_phone_no = models.CharField(max_length=250, blank=True, null=True)
+    local_address = models.CharField(max_length=250, blank=True, null=True)
+    local_phone_no = models.CharField(max_length=250, blank=True, null=True)
     street = models.CharField(max_length=250, blank=True, null=True)
     barangay = models.CharField(max_length=250, blank=True, null=True)
     city = models.CharField(max_length=250, blank=True, null=True)

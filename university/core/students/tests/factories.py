@@ -66,8 +66,8 @@ class StudentFactory(DjangoModelFactory):
     zip_code = factory.LazyFunction(fake.postcode)
     home_phone_no = factory.LazyFunction(fake.mobile_number)
 
-    baguio_address = factory.LazyFunction(fake.address)
-    baguio_phone_no = factory.LazyFunction(fake.mobile_number)
+    local_address = factory.LazyFunction(fake.address)
+    local_phone_no = factory.LazyFunction(fake.mobile_number)
 
     guardian_name = factory.LazyFunction(fake.name)
     guardian_address = factory.LazyFunction(fake.address)
@@ -108,7 +108,7 @@ class EnrollmentFactory(DjangoModelFactory):
     current_address = factory.LazyFunction(fake.address)
     contact_number = factory.SelfAttribute("student.phone_no")
     personal_email = factory.SelfAttribute("student.user.email")
-    slu_email = factory.SelfAttribute("student.user.email")
+    institutional_email = factory.SelfAttribute("student.user.email")
 
     father_name = factory.SelfAttribute("student.father_name")
     father_phone_no = factory.LazyFunction(fake.mobile_number)

@@ -92,8 +92,8 @@ class StudentProfileRetrieveSerializer(serializers.ModelSerializer):
             "street",
             "zip_code",
             "home_phone_no",
-            "baguio_address",
-            "baguio_phone_no",
+            "local_address",
+            "local_phone_no",
             "father_name",
             "father_occupation",
             "mother_name",
@@ -109,7 +109,7 @@ class StudentProfileRetrieveSerializer(serializers.ModelSerializer):
             "year_level",
             "total_units",
             "birth_date",
-            "slu_email",
+            "institutional_email",
         )
 
     def get_course(self, obj) -> CourseSerializer:
@@ -140,8 +140,8 @@ class StudentProfileUpdateSerializer(serializers.ModelSerializer):
             "street",
             "zip_code",
             "home_phone_no",
-            "baguio_address",
-            "baguio_phone_no",
+            "local_address",
+            "local_phone_no",
             "father_name",
             "father_occupation",
             "mother_name",
@@ -252,7 +252,7 @@ class EnrollmentRetrieveSerializer(serializers.ModelSerializer):
     EnrollmentDiscountSerializer = inline_serializer_class(
         model=models.EnrollmentDiscount,
         fields=(
-            "is_slu_employee",
+            "is_employee",
             "personnel",
             "is_employee_dependent",
             "dependent_personnel",
@@ -337,7 +337,7 @@ class EnrollmentInformationSerializer(serializers.ModelSerializer):
             "current_address",
             "contact_number",
             "personal_email",
-            "slu_email",
+            "institutional_email",
             "father_name",
             "father_occupation",
             "mother_name",
@@ -366,7 +366,7 @@ class EnrollmentDiscountSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.EnrollmentDiscount
         fields = (
-            "is_slu_employee",
+            "is_employee",
             "employee_no",
             "is_employee_dependent",
             "dependent_employee_no",
@@ -403,7 +403,7 @@ class EnrollmentDiscountSerializer(serializers.ModelSerializer):
         return dependent_employee_no
 
     def validate(self, data):
-        if data.get("is_slu_employee"):
+        if data.get("is_employee"):
             if not data.get("employee_no"):
                 raise serializers.ValidationError(
                     "Employee ID Number can't be null value."
