@@ -1,5 +1,5 @@
 """
-WSGI config for SLU project.
+WSGI config for the University Enrollment System.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

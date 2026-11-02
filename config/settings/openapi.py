@@ -1,7 +1,7 @@
 from django.db.models import TextChoices
 
 DESCRIPTION = """# Introduction
-SLU API for Admin and Student portals.
+University Enrollment System API for the Admin and Student portals.
 
 # Named Django Routes
 Refer to the `Path Name` of each operation.

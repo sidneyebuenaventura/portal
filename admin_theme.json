@@ -2,9 +2,9 @@
 {
     "model": "admin_interface.theme",
     "fields": {
-        "name": "SLU",
+        "name": "University Portal",
         "active": true,
-        "title": "SLU",
+        "title": "University Portal",
         "title_color": "#FFFFFF",
         "title_visible": true,
         "logo": "",

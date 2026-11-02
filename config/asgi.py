@@ -1,5 +1,5 @@
 """
-ASGI config for SLU project.
+ASGI config for the University Enrollment System.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

@@ -1,5 +1,5 @@
 """
-Django settings for SLU project.
+Django settings for the University Enrollment System.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/3.2/topics/settings/
@@ -135,6 +135,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "university.framework.context_processors.branding",
             ],
         },
     },
@@ -375,7 +376,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # https://drf-spectacular.readthedocs.io/en/latest/
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "SLU API",
+    "TITLE": "University Enrollment System API",
     "VERSION": "0.1",
     "DESCRIPTION": openapi_settings.DESCRIPTION,
     "SERVE_INCLUDE_SCHEMA": False,
@@ -440,7 +441,13 @@ HASHIDS_STUDENT_REQUEST_SALT = env(
 )
 
 
-# SLU Project
+# University Enrollment System
+
+UNIVERSITY_NAME = env("UNIVERSITY_NAME", default="Demo University")
+
+UNIVERSITY_STUDENT_PORTAL_URL = env(
+    "UNIVERSITY_STUDENT_PORTAL_URL", default="http://localhost:3001"
+)
 
 UNIVERSITY_CORE_RESERVED_ROLE_PREFIX = env("UNIVERSITY_CORE_RESERVED_ROLE_PREFIX", default="system")
 

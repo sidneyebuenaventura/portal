@@ -175,7 +175,7 @@ def bukas_payment_create(*, transaction: BukasTransaction):
         "first_name": student.first_name,
         "last_name": student.last_name,
         "mobile_number": soa.enrollment.student.phone_no,
-        "school": "Saint Louis University",
+        "school": settings.UNIVERSITY_NAME,
         "school_remaining_balance": float(soa.get_remaining_balance()),
         "student_id_number": student.id_number,
         "year": enrollment.year_level,

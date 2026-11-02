@@ -317,7 +317,7 @@ def test_student_create(
     )
 
     if created:
-        user.set_password("slutest")
+        user.set_password("testpassword")
         user.save()
 
     models.Student.objects.update_or_create(
@@ -331,7 +331,7 @@ def test_student_create(
             "middle_name": "",
             "last_name": last_name,
             "birth_date": "2000-01-01",
-            "birth_place": "Baguio City",
+            "birth_place": "Sample City",
             "civil_status": models.Student.CivilStatuses.SINGLE,
             "citizenship": models.Student.Citizenships.Filipino,
             "nationality": models.Student.Nationalities.Filipino,
@@ -339,11 +339,11 @@ def test_student_create(
             "senior_high_strand": None,
             "street": "#001 Street",
             "barangay": "Brgy. Barangay",
-            "city": "Baguio City",
+            "city": "Sample City",
             "zip_code": "2600",
             "phone_no": "0212345678",
             "home_phone_no": "09987654321",
-            "local_address": "Baguio City",
+            "local_address": "Sample City",
             "local_phone_no": "09123456789",
             "guardian_name": None,
             "guardian_address": None,
@@ -467,7 +467,7 @@ def test_student_create(
                 "mother_email": "mariadelacruz@example.com",
                 "is_living_with_parents": True,
                 "emergency_contact_name": "Maria dela Cruz",
-                "emergency_contact_address": "Baguio City",
+                "emergency_contact_address": "Sample City",
                 "emergency_contact_phone_no": "09987654321",
                 "emergency_contact_email": "mariadelacruz@example.com",
                 "miscellaneous_fee_specification": misc_fee_spec,
