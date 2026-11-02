@@ -1,5 +1,5 @@
 """
-Django settings for slu/core service.
+Django settings for university/core service.
 """
 
 from .base import *  # noqa

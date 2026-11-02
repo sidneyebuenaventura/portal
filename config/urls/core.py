@@ -1,5 +1,5 @@
 """
-URL Configuration for slu/core service.
+URL Configuration for university/core service.
 """
 
 from django.conf import settings
@@ -9,7 +9,7 @@ from django.urls import include, path
 from django_js_reverse import views as js_reverse_views
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView
 
-from slu.framework.views import EnumListApi, HealthCheckApi
+from university.framework.views import EnumListApi, HealthCheckApi
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -18,13 +18,13 @@ urlpatterns = [
     path("reverse.js", js_reverse_views.urls_js, name="js_reverse"),
     path("reverse.json", js_reverse_views.urls_json, name="js_reverse-json"),
     path("api/enums/", EnumListApi.as_view(), name="enums-list"),
-    path("api/", include("slu.core.accounts.urls")),
-    path("api/", include("slu.core.cms.urls")),
-    path("api/", include("slu.core.students.urls")),
-    path("api/", include("slu.core.maintenance.urls")),
-    path("api/", include("slu.payment.urls")),
+    path("api/", include("university.core.accounts.urls")),
+    path("api/", include("university.core.cms.urls")),
+    path("api/", include("university.core.students.urls")),
+    path("api/", include("university.core.maintenance.urls")),
+    path("api/", include("university.payment.urls")),
     path("healthcheck/", HealthCheckApi.as_view(), name="healthcheck"),
-    path("", include("slu.payment.service.urls")),
+    path("", include("university.payment.service.urls")),
 ]
 
 if settings.STORAGE_PROVIDER == "system":

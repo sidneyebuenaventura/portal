@@ -16,9 +16,9 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
 
-    # This allows easy placement of apps within the interior slu dir.
+    # This allows easy placement of apps within the interior university dir.
     current_path = os.path.dirname(os.path.abspath(__file__))
-    sys.path.append(os.path.join(current_path, 'slu'))
+    sys.path.append(os.path.join(current_path, 'university'))
 
     execute_from_command_line(sys.argv)
 

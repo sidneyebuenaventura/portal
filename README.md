@@ -75,6 +75,6 @@ REST API Docs can be access via `/docs` url of each service.
 - Core API Docs - http://localhost:8000/docs
 - Payment API Docs - http://localhost:8001/docs
 
-Django Admin can be accessed via `slu/core` service
+Django Admin can be accessed via `university/core` service
 
 - Django Admin - http://localhost:8000/admin

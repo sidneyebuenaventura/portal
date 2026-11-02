@@ -8,10 +8,10 @@ volumes:
 services:
   db:
     image: postgres:14.2-alpine
-    container_name: slu_db
+    container_name: university_db
     environment:
-      - POSTGRES_DB=slu
-      - POSTGRES_USER=slu
+      - POSTGRES_DB=university
+      - POSTGRES_USER=university
       - POSTGRES_PASSWORD=password
     volumes:
       - db-volume:/var/lib/postgresql/data/
@@ -20,7 +20,7 @@ services:
 
   broker:
     image: rabbitmq:3.9-management-alpine
-    container_name: slu_broker
+    container_name: university_broker
     ports:
       - 8080:15672
     volumes:
@@ -29,14 +29,14 @@ services:
 
   mailhog:
     image: mailhog/mailhog:latest
-    container_name: slu_mailhog
+    container_name: university_mailhog
     ports:
       - 8025:8025
 
   base:
     build: .
-    image: slu/base
-    container_name: slu_base
+    image: university/base
+    container_name: university_base
     command: echo 0
     volumes:
       - ./:/app/
@@ -44,7 +44,7 @@ services:
   worker:
     extends:
       service: base
-    container_name: slu_worker
+    container_name: university_worker
     command: runworker
     depends_on:
       - broker
@@ -52,7 +52,7 @@ services:
   beat:
     extends:
       service: base
-    container_name: slu_beat
+    container_name: university_beat
     command: runbeat
     depends_on:
       - db
@@ -61,7 +61,7 @@ services:
   core:
     extends:
       service: base
-    container_name: slu_core
+    container_name: university_core
     command: rundev
     environment:
       DJANGO_SETTINGS_MODULE: config.settings.core
@@ -74,7 +74,7 @@ services:
   core_consumer:
     extends:
       service: base
-    container_name: slu_core_consumer
+    container_name: university_core_consumer
     command: python manage.py run_core
     depends_on:
       - db
@@ -83,7 +83,7 @@ services:
   payment:
     extends:
       service: base
-    container_name: slu_payment
+    container_name: university_payment
     command: rundev
     environment:
       DJANGO_SETTINGS_MODULE: config.settings.payment
@@ -96,7 +96,7 @@ services:
   audit_trail:
     extends:
       service: base
-    container_name: slu_audit_trail
+    container_name: university_audit_trail
     command: python manage.py run_audit_trail
     depends_on:
       - db
@@ -105,7 +105,7 @@ services:
   notification:
     extends:
       service: base
-    container_name: slu_notification
+    container_name: university_notification
     command: python manage.py run_notification
     depends_on:
       - db

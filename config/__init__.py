@@ -3,7 +3,7 @@
 from .celery import app as celery_app
 
 # Make sure openapi extensions are always loaded
-import slu.core.openapi as core_openapi
-import slu.payment.openapi as payment_openapi
+import university.core.openapi as core_openapi
+import university.payment.openapi as payment_openapi
 
 __all__ = ("celery_app", "core_openapi", "payment_openapi")

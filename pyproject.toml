@@ -1,6 +1,6 @@
 [tool.pytest.ini_options]
 addopts = "-v"
-testpaths = "slu/"
+testpaths = "university/"
 python_files = "tests.py test_*.py"
 norecursedirs = ".git __pycache__"
 filterwarnings = [
@@ -10,7 +10,7 @@ filterwarnings = [
 
 [tool.coverage.run]
 include = [
-    "slu/*"
+    "university/*"
 ]
 omit = [
     "*migrations*",

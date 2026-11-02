@@ -1,5 +1,5 @@
 """
-Django settings for slu/payment service.
+Django settings for university/payment service.
 """
 
 from .base import *  # noqa

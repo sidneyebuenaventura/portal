@@ -1,9 +1,9 @@
 import pytest
 from rest_framework.test import APIClient
 
-from slu.core.accounts.tests.factories import *
-from slu.core.cms.tests.factories import *
-from slu.core.students.tests.factories import *
+from university.core.accounts.tests.factories import *
+from university.core.cms.tests.factories import *
+from university.core.students.tests.factories import *
 
 
 @pytest.fixture

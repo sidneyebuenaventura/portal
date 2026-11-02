@@ -85,14 +85,14 @@ THIRD_PARTY_APPS = [
 ]
 
 SERVICE_APPS = [
-    "slu.core",
-    "slu.core.accounts",
-    "slu.core.cms",
-    "slu.core.students",
-    "slu.core.maintenance",
-    "slu.payment",
-    "slu.audit_trail",
-    "slu.notification",
+    "university.core",
+    "university.core.accounts",
+    "university.core.cms",
+    "university.core.students",
+    "university.core.maintenance",
+    "university.payment",
+    "university.audit_trail",
+    "university.notification",
 ]
 
 
@@ -309,12 +309,12 @@ LOGGING = {
             "level": LOG_LEVEL,
             "propagate": False,
         },
-        "slu": {
+        "university": {
             "handlers": ["console", "json_file", "flat_line_file"],
             "level": LOG_LEVEL,
             "propagate": False,
         },
-        "slu.payment": {
+        "university.payment": {
             "handlers": [
                 "payment_console",
                 "payment_json_file",
@@ -337,7 +337,7 @@ CELERY_BROKER_URL = env("CELERY_BROKER_URL", default=None)
 # https://www.django-rest-framework.org/
 
 REST_FRAMEWORK = {
-    "DEFAULT_SCHEMA_CLASS": "slu.framework.openapi.AutoSchema",
+    "DEFAULT_SCHEMA_CLASS": "university.framework.openapi.AutoSchema",
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
         "rest_framework.authentication.SessionAuthentication",
@@ -350,8 +350,8 @@ REST_FRAMEWORK = {
 # https://dj-rest-auth.readthedocs.io/en/latest/index.html
 
 REST_AUTH_SERIALIZERS = {
-    "TOKEN_SERIALIZER": "slu.core.accounts.serializers.TokenSerializer",
-    "PASSWORD_CHANGE_SERIALIZER": "slu.core.accounts.serializers.PasswordChangeSerializer",
+    "TOKEN_SERIALIZER": "university.core.accounts.serializers.TokenSerializer",
+    "PASSWORD_CHANGE_SERIALIZER": "university.core.accounts.serializers.PasswordChangeSerializer",
 }
 
 OLD_PASSWORD_FIELD_ENABLED = True
@@ -362,7 +362,7 @@ LOGOUT_ON_PASSWORD_CHANGE = True
 # Django JS Reverse
 # https://github.com/ierror/django-js-reverse
 
-JS_REVERSE_INCLUDE_ONLY_NAMESPACES = ["slu."]
+JS_REVERSE_INCLUDE_ONLY_NAMESPACES = ["university."]
 
 
 # CORS
@@ -442,19 +442,19 @@ HASHIDS_STUDENT_REQUEST_SALT = env(
 
 # SLU Project
 
-SLU_CORE_RESERVED_ROLE_PREFIX = env("SLU_CORE_RESERVED_ROLE_PREFIX", default="system")
+UNIVERSITY_CORE_RESERVED_ROLE_PREFIX = env("UNIVERSITY_CORE_RESERVED_ROLE_PREFIX", default="system")
 
-SLU_PAYMENT_SERVICE = env("SLU_PAYMENT_SERVICE", default="http://localhost:8001")
+UNIVERSITY_PAYMENT_SERVICE = env("UNIVERSITY_PAYMENT_SERVICE", default="http://localhost:8001")
 
-SLU_PAYMENT_TRANSACTION_TTL = timedelta(
-    minutes=env.int("SLU_PAYMENT_TRANSACTION_TTL", default=2880)
+UNIVERSITY_PAYMENT_TRANSACTION_TTL = timedelta(
+    minutes=env.int("UNIVERSITY_PAYMENT_TRANSACTION_TTL", default=2880)
 )
 
 EMAIL_WHITELIST = env.list("EMAIL_WHITELIST", default=[])
 
 EVENT_BROKER_URL = env("EVENT_BROKER_URL", default=None)
 
-EVENT_GLOBAL_EXCHANGE = env("EVENT_GLOBAL_EXCHANGE", default="slu.global")
+EVENT_GLOBAL_EXCHANGE = env("EVENT_GLOBAL_EXCHANGE", default="university.global")
 
 EVENT_MAP = {
     "notification": {
