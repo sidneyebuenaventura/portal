@@ -149,7 +149,7 @@ TAG_GROUPS = [
 ]
 
 EXTENSIONS_INFO = {
-    "x-logo": {"url": "/static/slu.png"},
+    "x-logo": {"url": "/static/logo.svg"},
 }
 
 EXTENSIONS_ROOT = {
